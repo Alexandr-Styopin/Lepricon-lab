@@ -1,0 +1,169 @@
+/* ===== Токены ===== */
+:root {
+  color-scheme: dark;
+  --bg: #0a0a0b;
+  --text: #e9e6df;
+  --muted: #bdb9b0;
+  --gold: #d4a84b;
+  /* Картинки: мобильные версии, на ≥48rem подменяются на широкие (внизу) */
+  --hero: url(../images/hero-lab-m.jpg);
+  --stage: url(../images/stage-fog-m.jpg);
+  --mixer: url(../images/mixer-m.jpg);
+  --phones: url(../images/headphones-m.jpg);
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: 3.6rem; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 1rem/1.6 "Avenir Next", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+h1, h2, p { margin: 0; }
+h2 {
+  margin-bottom: .7rem;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.ico {
+  display: block;
+  width: 2.4rem; height: 2.4rem;
+  margin-bottom: .9rem;
+  fill: none; stroke: var(--gold); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ===== Шапка и меню ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center;
+  padding: .9rem 1.25rem;
+  background: rgba(10, 10, 11, .96);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+.brand { color: #fff; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; text-decoration: none; }
+.brand span { color: var(--gold); }
+.burger {
+  margin-left: auto;
+  width: 2.4rem; height: 2.4rem; padding: .45rem .3rem;
+  display: grid; align-content: center; gap: 6px;
+  background: none; border: 0; cursor: pointer;
+}
+.burger span { height: 2px; background: #fff; border-radius: 2px; }
+nav {
+  position: absolute; top: 100%; left: 0; right: 0;
+  display: none; flex-direction: column;
+  background: rgba(10, 10, 11, .98);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+nav.open { display: flex; }
+nav a { padding: 1rem 1.25rem; text-decoration: none; border-top: 1px solid rgba(255, 255, 255, .06); }
+nav a:hover, nav a[aria-current] { color: var(--gold); }
+
+/* ===== Hero ===== */
+.hero {
+  position: relative; isolation: isolate;
+  min-height: calc(100svh - 3.4rem);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 3rem 1.25rem 9rem;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 11, .4), rgba(10, 10, 11, .8) 70%, var(--bg)),
+    var(--hero) 8% 0 / cover no-repeat;
+}
+.hero::after {            /* микшер внизу, растворяется вверх */
+  content: ""; position: absolute; inset: auto 0 0; height: 30%; z-index: -1;
+  background:
+    linear-gradient(180deg, var(--bg), rgba(10, 10, 11, .1) 65%),
+    var(--mixer) center bottom / cover no-repeat;
+}
+.hero h1 img { display: block; width: min(88vw, 28rem); height: auto; margin: 0 auto; }
+.tagline {
+  max-width: 20rem; margin: 2rem 0 2.2rem;
+  font-size: 1.15rem; font-weight: 500; line-height: 1.9;
+  letter-spacing: .3em; text-transform: uppercase;
+}
+.btn {
+  display: inline-block; padding: .85rem 2.6rem; border-radius: 999px;
+  background: linear-gradient(180deg, #e6c984, #b08a3e);
+  box-shadow: 0 4px 18px rgba(212, 168, 75, .25);
+  color: #1a1407; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+}
+.btn:hover { filter: brightness(1.1); }
+
+/* ===== Услуги ===== */
+.service {
+  --img: none; --pos: right center;
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: 15rem;
+  padding: 2rem 1.5rem 2.5rem;
+}
+.service::before {        /* фото справа, растворяется под текстом и к краям */
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(90deg, var(--bg) 30%, rgba(10, 10, 11, .2)),
+    linear-gradient(180deg, var(--bg), transparent 30%),
+    linear-gradient(0deg, var(--bg), transparent 30%),
+    var(--img) var(--pos) / cover no-repeat;
+}
+.service::after {         /* золотая черта-разделитель */
+  content: ""; position: absolute; left: 1.5rem; bottom: 0; width: 4.5rem; height: 2px; background: var(--gold);
+}
+.service > * { max-width: 19rem; }
+.service p { color: var(--muted); }
+.service--stage { --img: var(--stage); --pos: right top; }
+.service--mixer { --img: var(--mixer); --pos: right bottom; }
+
+/* ===== About + контакты ===== */
+.closing { position: relative; isolation: isolate; padding: 2.5rem 1.5rem 13rem; }
+.closing::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, var(--bg) 35%, rgba(10, 10, 11, .1) 75%, rgba(10, 10, 11, .4)),
+    var(--phones) right bottom / cover no-repeat;
+}
+#about p { max-width: 34rem; }
+.rule { width: 7rem; height: 2px; margin: 2rem 0; background: var(--gold); }
+.contacts { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.2rem; }
+.contacts a, .contacts span { display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; color: #fff; text-decoration: none; }
+.contacts a:hover { color: var(--gold); }
+.contacts .ico { flex: none; width: 1.9rem; height: 1.9rem; margin: 0; }
+
+/* ===== Планшет и ноутбук ===== */
+@media (min-width: 48rem) {
+  :root {
+    --hero: url(../images/hero-lab-d.jpg);
+    --stage: url(../images/stage-fog-d.jpg);
+    --mixer: url(../images/mixer-d.jpg);
+    --phones: url(../images/headphones-d.jpg);
+  }
+  html { scroll-padding-top: 4.5rem; }
+  .site-header { padding-inline: max(1.5rem, calc((100% - 72rem) / 2)); }
+  .burger { display: none; }
+  nav { position: static; display: flex; flex-direction: row; gap: 2rem; margin-left: auto; background: none; border: 0; }
+  nav a { padding: 0 0 2px; border: 0; border-bottom: 2px solid transparent; }
+  nav a:hover, nav a[aria-current] { border-bottom-color: var(--gold); }
+
+  .hero { min-height: 42rem; padding-bottom: 12rem; background-position: center top; }
+  .hero h1 img { width: 34rem; }
+
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 72rem; margin: 0 auto; }
+  .service { min-height: 26rem; padding: 2.5rem 2rem; }
+  .service::after { left: 2rem; }
+
+  .closing {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-content: start;
+    padding: 4rem max(1.5rem, calc((100% - 72rem) / 2)) 11rem;
+  }
+  .rule { display: none; }
+}
