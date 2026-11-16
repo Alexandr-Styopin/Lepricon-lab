@@ -243,47 +243,70 @@ nav a:hover, nav a[aria-current] { color: var(--gold); }
 
 /* ===== Фото DJ + Meet the DJ + The Setup ===== */
 .trio {
-  padding: 2.5rem 1.5rem 1rem;
+  padding: 2.2rem 1.25rem 1rem;
   display: grid;
-  gap: 1.5rem;
+  grid-template-columns: minmax(110px, 38%) 1fr;
+  gap: 1.25rem 1rem;
+  align-items: start;
   background: var(--bg);
 }
 
 .trio__photo {
   margin: 0;
   aspect-ratio: 1 / 1;
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(212, 168, 75, .35);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.6);
+  align-self: start;
 }
 .trio__photo img {
   display: block; width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%;
 }
 
+.trio .ico {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-bottom: .4rem;
+}
+
 .trio__card {
   position: relative;
-  padding: 1.8rem 0 2.8rem;
+  padding: 0 0 1.2rem;
 }
 .trio__card::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 1.2rem;
-  width: 4rem;
+  bottom: 0;
+  width: 3.5rem;
   height: 2px;
   background: var(--gold);
 }
 .trio__card h2 {
   color: #ffffff;
-  margin-bottom: .8rem;
+  margin-bottom: .4rem;
+  font-size: 1.18rem;
 }
 .trio__card p {
   color: #d6d2c8;
-  font-size: 1rem;
-  line-height: 1.65;
+  font-size: .92rem;
+  line-height: 1.55;
 }
-.trio__card p + p { margin-top: 1rem; }
+.trio__card p + p { margin-top: .8rem; }
+
+/* The Setup на мобильных занимает всю ширину в следующем ряду */
+.trio__card:last-child {
+  grid-column: 1 / -1;
+  padding: 1.2rem 0 2rem;
+}
+.trio__card:last-child h2 {
+  font-size: 1.25rem;
+}
+.trio__card:last-child p {
+  font-size: .95rem;
+  line-height: 1.6;
+}
 
 /* ===== About the project + Contacts ===== */
 .closing {
@@ -440,8 +463,13 @@ nav a:hover, nav a[aria-current] { color: var(--gold); }
     grid-template-columns: 1fr 1.3fr; gap: 1.5rem 2.5rem;
     max-width: 76rem; margin: 0 auto; padding: 4rem 1.5rem 2rem;
   }
-  .trio__photo { align-self: start; }
-  .trio__card:last-child { grid-column: 1 / -1; }
+  .trio__photo { align-self: start; border-radius: 14px; }
+  .trio .ico { width: 2.2rem; height: 2.2rem; margin-bottom: .8rem; }
+  .trio__card { padding: 1.8rem 0 2.8rem; }
+  .trio__card::after { bottom: 1.2rem; width: 4rem; }
+  .trio__card h2 { font-size: 1.35rem; margin-bottom: .8rem; }
+  .trio__card p { font-size: 1rem; line-height: 1.65; }
+  .trio__card:last-child { grid-column: 1 / -1; padding-top: 1.8rem; }
   .trio__card > * { max-width: 44rem; }
 
   /* About & Contacts */
@@ -486,5 +514,6 @@ nav a:hover, nav a[aria-current] { color: var(--gold); }
   }
   .trio__card:last-child {
     grid-column: auto;
+    padding: 1.8rem 0 2.8rem;
   }
 }
