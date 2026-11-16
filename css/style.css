@@ -2,14 +2,18 @@
 :root {
   color-scheme: dark;
   --bg: #0a0a0b;
-  --text: #e9e6df;
-  --muted: #bdb9b0;
+  --text: #ffffff;
+  --muted: #d6d2c8;
   --gold: #d4a84b;
-  /* Картинки: мобильные версии, на ≥48rem подменяются на широкие (внизу) */
-  --hero: url(../images/hero-lab-m.jpg);
-  --stage: url(../images/stage-fog-m.jpg);
-  --mixer: url(../images/mixer-m.jpg);
-  --phones: url(../images/headphones-m.jpg);
+  --gold-glow: rgba(212, 168, 75, 0.4);
+
+  /* Фоновые изображения: по умолчанию мобильная версия */
+  --hero: url(../images/hero-lab-m.jpg?v=5);
+  --stage: url(../images/stage-fog-m.jpg?v=2);
+  --mixer: url(../images/mixer-m.jpg?v=2);
+  --phones: url(../images/headphones-m.jpg?v=2);
+  --idea: url(../images/idea-m.jpg?v=2);
+
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -17,41 +21,55 @@
 *, *::before, *::after { box-sizing: inherit; }
 html { scroll-padding-top: 3.6rem; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font: 1rem/1.6 "Avenir Next", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 a { color: inherit; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 h1, h2, p { margin: 0; }
 h2 {
-  margin-bottom: .7rem;
-  color: #fff;
-  font-size: 1.5rem;
-  line-height: 1.2;
+  margin-bottom: .6rem;
+  color: #ffffff;
+  font-size: 1.35rem;
+  line-height: 1.25;
   font-weight: 600;
-  letter-spacing: .05em;
+  letter-spacing: .06em;
   text-transform: uppercase;
 }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Иконки в фирменном золотом цвете */
 .ico {
   display: block;
-  width: 2.4rem; height: 2.4rem;
-  margin-bottom: .9rem;
-  fill: none; stroke: var(--gold); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round;
+  width: 2.2rem; height: 2.2rem;
+  margin-bottom: .8rem;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
 }
 
 /* ===== Шапка и меню ===== */
 .site-header {
-  position: sticky; top: 0; z-index: 10;
+  position: sticky; top: 0; z-index: 100;
   display: flex; align-items: center;
   padding: .9rem 1.25rem;
-  background: rgba(10, 10, 11, .96);
-  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  background: rgba(10, 10, 11, .94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
 }
-.brand { color: #fff; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; text-decoration: none; }
+.brand {
+  color: #fff; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; text-decoration: none;
+}
 .brand span { color: var(--gold); }
 .burger {
   margin-left: auto;
@@ -67,138 +85,406 @@ nav {
   border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 nav.open { display: flex; }
-nav a { padding: 1rem 1.25rem; text-decoration: none; border-top: 1px solid rgba(255, 255, 255, .06); }
+nav a {
+  padding: 1rem 1.25rem; text-decoration: none; border-top: 1px solid rgba(255, 255, 255, .06);
+  color: #e8e4dc; font-weight: 500;
+}
 nav a:hover, nav a[aria-current] { color: var(--gold); }
 
-/* ===== Hero ===== */
+/* ===== Hero (Мобильная версия по умолчанию) ===== */
 .hero {
-  position: relative; isolation: isolate;
+  position: relative;
+  isolation: isolate;
   min-height: calc(100svh - 3.4rem);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 3rem 1.25rem 9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.25rem 5rem;
   text-align: center;
-  background:
-    linear-gradient(180deg, rgba(10, 10, 11, .4), rgba(10, 10, 11, .8) 70%, var(--bg)),
-    var(--hero) 8% 0 / cover no-repeat;
+  background: var(--bg);
+  overflow: hidden;
 }
-.hero::after {            /* микшер внизу, растворяется вверх */
-  content: ""; position: absolute; inset: auto 0 0; height: 30%; z-index: -1;
-  background:
-    linear-gradient(180deg, var(--bg), rgba(10, 10, 11, .1) 65%),
-    var(--mixer) center bottom / cover no-repeat;
-}
-.hero h1 img { display: block; width: min(88vw, 28rem); height: auto; margin: 0 auto; }
-.tagline {
-  max-width: 20rem; margin: 2rem 0 2.2rem;
-  font-size: 1.15rem; font-weight: 500; line-height: 1.9;
-  letter-spacing: .3em; text-transform: uppercase;
-}
-.btn {
-  display: inline-block; padding: .85rem 2.6rem; border-radius: 999px;
-  background: linear-gradient(180deg, #e6c984, #b08a3e);
-  box-shadow: 0 4px 18px rgba(212, 168, 75, .25);
-  color: #1a1407; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
-}
-.btn:hover { filter: brightness(1.1); }
 
-/* ===== Услуги ===== */
+/* Фоновое изображение Hero: часы, лампы, лаборатория
+   Лампы полностью открыты и видны, а к самому низу блока фон мягко растворяется в черный (#0a0a0b) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(180deg,
+      rgba(10, 10, 11, 0) 0%,
+      rgba(10, 10, 11, 0) 70%,
+      rgba(10, 10, 11, 0.45) 86%,
+      var(--bg) 100%
+    ),
+    var(--hero) center 68% / cover no-repeat;
+  filter: brightness(1.1) saturate(1.2);
+}
+
+.hero h1 {
+  position: relative;
+  margin-bottom: .2rem;
+}
+.hero h1 img {
+  display: block;
+  width: min(75vw, 18rem);
+  height: auto;
+  aspect-ratio: 1024 / 682;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* Слоган */
+.tagline {
+  max-width: 16rem;
+  margin: 1.4rem auto 1.8rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+}
+
+/* Кнопка Explore */
+.btn {
+  display: inline-block;
+  padding: .85rem 2.8rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #e6c984, #b08a3e);
+  box-shadow: 0 4px 18px rgba(212, 168, 75, .3);
+  color: #1a1407;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+}
+.btn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(212, 168, 75, .45);
+}
+
+/* ===== Услуги (Services) ===== */
+.services {
+  padding: 1.5rem 0;
+  background: var(--bg);
+}
+
 .service {
   --img: none; --pos: right center;
-  position: relative; isolation: isolate; overflow: hidden;
-  min-height: 15rem;
-  padding: 2rem 1.5rem 2.5rem;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 16rem;
+  padding: 2.2rem 1.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.service::before {        /* фото справа, растворяется под текстом и к краям */
-  content: ""; position: absolute; inset: 0; z-index: -1;
+
+/* Фоновая картинка:
+   Слева — чистый глубокий черный цвет (текст читается со 100% контрастом).
+   Справа — яркое, открытое, насыщенное изображение без темной пленки! */
+.service::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background:
-    linear-gradient(90deg, var(--bg) 30%, rgba(10, 10, 11, .2)),
-    linear-gradient(180deg, var(--bg), transparent 30%),
-    linear-gradient(0deg, var(--bg), transparent 30%),
+    linear-gradient(90deg,
+      #0a0a0b 0%,
+      #0a0a0b 44%,
+      rgba(10, 10, 11, 0.75) 60%,
+      rgba(10, 10, 11, 0.2) 78%,
+      transparent 90%
+    ),
+    linear-gradient(180deg, var(--bg) 0%, transparent 12%, transparent 88%, var(--bg) 100%),
     var(--img) var(--pos) / cover no-repeat;
+  filter: brightness(1.15) saturate(1.25);
 }
-.service::after {         /* золотая черта-разделитель */
-  content: ""; position: absolute; left: 1.5rem; bottom: 0; width: 4.5rem; height: 2px; background: var(--gold);
+
+/* Фирменная золотая черта-разделитель внизу каждого блока */
+.service::after {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  bottom: 0;
+  width: 4rem;
+  height: 2px;
+  background: var(--gold);
 }
-.service > * { max-width: 19rem; }
-.service p { color: var(--muted); }
+
+.service > * {
+  max-width: 18rem;
+  position: relative;
+  z-index: 1;
+}
+
+.service h2 {
+  color: #ffffff;
+  margin-bottom: .6rem;
+}
+
+.service p {
+  color: #d6d2c8;
+  font-size: .98rem;
+  line-height: 1.6;
+}
+
 .service--stage { --img: var(--stage); --pos: right top; }
+.service--idea { --img: var(--idea); --pos: right center; }
 .service--mixer { --img: var(--mixer); --pos: right bottom; }
 
-/* ===== Фото + Meet the DJ + The Setup (как услуги: столбиком на телефоне, рядом на ноутбуке) ===== */
-.trio { padding: 2rem 1.5rem 0; display: grid; }
-.trio__photo { margin: 0; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 168, 75, .4); }
-.trio__photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; }
-.trio__card { position: relative; padding: 2rem 0 3.5rem; }
-.trio__card::after { content: ""; position: absolute; left: 0; bottom: 1.5rem; width: 4.5rem; height: 2px; background: var(--gold); }
-.trio__card p { color: var(--muted); }
-.trio__card p + p { margin-top: .9rem; }
+/* ===== Фото DJ + Meet the DJ + The Setup ===== */
+.trio {
+  padding: 2.5rem 1.5rem 1rem;
+  display: grid;
+  gap: 1.5rem;
+  background: var(--bg);
+}
 
-/* ===== About + контакты ===== */
-.closing { position: relative; isolation: isolate; padding: 2.5rem 1.5rem 13rem; }
+.trio__photo {
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 168, 75, .35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+.trio__photo img {
+  display: block; width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%;
+}
+
+.trio__card {
+  position: relative;
+  padding: 1.8rem 0 2.8rem;
+}
+.trio__card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 1.2rem;
+  width: 4rem;
+  height: 2px;
+  background: var(--gold);
+}
+.trio__card h2 {
+  color: #ffffff;
+  margin-bottom: .8rem;
+}
+.trio__card p {
+  color: #d6d2c8;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.trio__card p + p { margin-top: 1rem; }
+
+/* ===== About the project + Contacts ===== */
+.closing {
+  position: relative;
+  isolation: isolate;
+  padding: 2.5rem 1.5rem 13rem;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* Фото наушников в правом нижнем углу */
 .closing::before {
-  content: ""; position: absolute; inset: 0; z-index: -1;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background:
-    linear-gradient(180deg, var(--bg) 35%, rgba(10, 10, 11, .1) 75%, rgba(10, 10, 11, .4)),
+    linear-gradient(180deg,
+      var(--bg) 0%,
+      var(--bg) 32%,
+      rgba(10, 10, 11, 0.75) 60%,
+      rgba(10, 10, 11, 0.15) 85%,
+      rgba(10, 10, 11, 0.35) 100%
+    ),
+    linear-gradient(90deg,
+      var(--bg) 0%,
+      var(--bg) 35%,
+      rgba(10, 10, 11, 0.8) 60%,
+      transparent 85%
+    ),
     var(--phones) right bottom / cover no-repeat;
+  filter: brightness(1.15) saturate(1.25);
 }
-#about p { max-width: 34rem; }
-.rule { width: 7rem; height: 2px; margin: 2rem 0; background: var(--gold); }
-.contacts { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.2rem; }
-.contacts a, .contacts span { display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; color: #fff; text-decoration: none; }
-.contacts a:hover { color: var(--gold); }
 
-/* Мягкая полупрозрачная «стеклянная» подложка под контактами: размытие и размытые края */
-.glass { position: relative; isolation: isolate; width: fit-content; max-width: 100%; }
-.glass::before {
-  content: ""; position: absolute; inset: -1.6rem -1.3rem; z-index: -1;
-  background: rgba(10, 10, 11, .55);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent),
-                      linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent),
-              linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
-  mask-composite: intersect;
+#about p {
+  color: #d6d2c8;
+  max-width: 32rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
 }
-.contacts .ico { flex: none; width: 1.9rem; height: 1.9rem; margin: 0; }
 
-/* ===== Планшет и ноутбук ===== */
+/* Золотая черта по центру между About и Contacts */
+.rule {
+  width: 5rem;
+  height: 2px;
+  margin: 2.2rem 0;
+  background: var(--gold);
+}
+
+.contacts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+.contacts a, .contacts span {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  font-size: 1.1rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.contacts a:hover {
+  color: var(--gold);
+}
+.contacts .ico {
+  flex: none;
+  width: 1.9rem;
+  height: 1.9rem;
+  margin: 0;
+}
+
+/* ===== ПЛАНШЕТЫ (от 37.5rem / 600px до 63.99rem / 1023px) ===== */
+@media (min-width: 37.5rem) {
+  :root {
+    --hero: url(../images/hero-lab-t.jpg?v=5);
+  }
+  .hero {
+    min-height: 44rem;
+    padding: 3.5rem 1.5rem 5.5rem;
+  }
+  .hero::before {
+    inset: 0;
+    background:
+      linear-gradient(180deg,
+        rgba(10, 10, 11, 0) 0%,
+        rgba(10, 10, 11, 0) 70%,
+        rgba(10, 10, 11, 0.45) 86%,
+        var(--bg) 100%
+      ),
+      var(--hero) center 70% / cover no-repeat;
+  }
+  .hero h1 img {
+    width: min(70vw, 24rem);
+  }
+  .tagline {
+    max-width: 22rem;
+  }
+}
+
+/* ===== ПЛАНШЕТ (горизонтальный) И НОУТБУК (≥48rem / 768px) ===== */
 @media (min-width: 48rem) {
   :root {
-    --hero: url(../images/hero-lab-d.jpg);
-    --stage: url(../images/stage-fog-d.jpg);
-    --mixer: url(../images/mixer-d.jpg);
-    --phones: url(../images/headphones-d.jpg);
+    --stage: url(../images/stage-fog-d.jpg?v=2);
+    --mixer: url(../images/mixer-d.jpg?v=2);
+    --phones: url(../images/headphones-d.jpg?v=2);
+    --idea: url(../images/idea-d.jpg?v=2);
   }
   html { scroll-padding-top: 4.5rem; }
-  .site-header { padding-inline: max(1.5rem, calc((100% - 72rem) / 2)); }
+  .site-header { padding-inline: max(1.5rem, calc((100% - 74rem) / 2)); }
   .burger { display: none; }
-  nav { position: static; display: flex; flex-direction: row; gap: 2rem; margin-left: auto; background: none; border: 0; }
-  nav a { padding: 0 0 2px; border: 0; border-bottom: 2px solid transparent; }
-  nav a:hover, nav a[aria-current] { border-bottom-color: var(--gold); }
+  nav {
+    position: static; display: flex; flex-direction: row; gap: 2.2rem;
+    margin-left: auto; background: none; border: 0;
+  }
+  nav a {
+    padding: 0 0 4px; border: 0; border-bottom: 2px solid transparent;
+    color: #e8e4db; font-size: 1.05rem;
+  }
+  nav a:hover, nav a[aria-current] { border-bottom-color: var(--gold); color: #ffffff; }
 
-  .hero { min-height: 42rem; padding-bottom: 12rem; background-position: center top; }
-  .hero h1 img { width: 34rem; }
-
-  .services { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 72rem; margin: 0 auto; }
-  .service { min-height: 26rem; padding: 2.5rem 2rem; }
+  /* Услуги: 3 колонки */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 76rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+  .service {
+    min-height: 28rem;
+    padding: 2.5rem 2rem;
+    justify-content: flex-start;
+  }
+  .service::before {
+    background:
+      linear-gradient(180deg,
+        rgba(10, 10, 11, 0.95) 0%,
+        rgba(10, 10, 11, 0.8) 45%,
+        rgba(10, 10, 11, 0.25) 75%,
+        transparent 95%
+      ),
+      linear-gradient(90deg, #0a0a0b 0%, transparent 60%),
+      var(--img) var(--pos) / cover no-repeat;
+  }
   .service::after { left: 2rem; }
-  /* Планшет: фото + Meet the DJ в первом ряду, The Setup на всю ширину ниже */
-  .trio { grid-template-columns: 1fr 1.3fr; gap: 1rem 2.5rem; max-width: 72rem; margin: 0 auto; padding: 4rem 2rem 1rem; }
-  .trio__photo { align-self: start; }
-  .trio__card { padding: 0 0 3.5rem; }
-  .trio__card:last-child { grid-column: 1 / -1; }
-  .trio__card > * { max-width: 40rem; }
 
+  /* DJ & Setup */
+  .trio {
+    grid-template-columns: 1fr 1.3fr; gap: 1.5rem 2.5rem;
+    max-width: 76rem; margin: 0 auto; padding: 4rem 1.5rem 2rem;
+  }
+  .trio__photo { align-self: start; }
+  .trio__card:last-child { grid-column: 1 / -1; }
+  .trio__card > * { max-width: 44rem; }
+
+  /* About & Contacts */
   .closing {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-content: start;
-    padding: 4rem max(1.5rem, calc((100% - 72rem) / 2)) 11rem;
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; align-items: start;
+    max-width: 76rem; margin: 0 auto;
+    padding: 4rem max(1.5rem, calc((100% - 74rem) / 2)) 12rem;
   }
   .rule { display: none; }
 }
 
-/* ===== Ноутбук: три блока в ряд ===== */
+/* ===== ДЕСКТОП И ШИРОКИЕ ЭКРАНЫ (≥64rem / 1024px) ===== */
 @media (min-width: 64rem) {
-  .trio { grid-template-columns: repeat(3, 1fr); }
-  .trio__card:last-child { grid-column: auto; }
+  :root {
+    --hero: url(../images/hero-lab-d.jpg?v=5);
+  }
+  .hero {
+    min-height: 48rem;
+    padding: 4rem 2rem 6rem;
+  }
+  .hero::before {
+    inset: 0;
+    background:
+      linear-gradient(180deg,
+        rgba(10, 10, 11, 0) 0%,
+        rgba(10, 10, 11, 0) 65%,
+        rgba(10, 10, 11, 0.5) 85%,
+        var(--bg) 100%
+      ),
+      var(--hero) center 80% / cover no-repeat;
+  }
+  .hero h1 img {
+    width: 28rem;
+    height: auto;
+  }
+  .tagline {
+    max-width: 28rem;
+    margin: 1.6rem auto 2.2rem;
+  }
+  .trio {
+    grid-template-columns: 1fr 1.15fr 1.35fr;
+  }
+  .trio__card:last-child {
+    grid-column: auto;
+  }
 }
