@@ -1,5 +1,9 @@
 /* Дополнения к style.css. Подключается после него, поэтому переопределяет. */
 
+/* ===== Положение логотипа в hero ===== */
+/* Чтобы поднять логотип выше, УМЕНЬШИ padding-top. Чтобы опустить, увеличь. */
+.hero { justify-content: flex-start; padding-top: 1.75rem; }
+
 /* ===== Тень под всем текстом в секциях ===== */
 main { text-shadow: 0 1px 2px rgba(0, 0, 0, .9), 0 2px 12px rgba(0, 0, 0, .65); }
 main .btn { text-shadow: none; }
@@ -32,6 +36,7 @@ main h2:not(.sr-only) {
   #dj .trio__card:last-child h2 { animation-delay: -1.2s; }
   #community h2 { animation-delay: -5.2s; }
   #about h2 { animation-delay: -3.4s; }
+  #experience h2 { animation-delay: -3.4s; }
   #collab h2 { animation-delay: -1.8s; }
   #contact h2 { animation-delay: -6s; }
 }
@@ -196,4 +201,92 @@ main h2:not(.sr-only) {
 @media (min-width: 48rem) {
   .panel { padding-inline: max(2rem, calc((100% - 72rem) / 2)); }
   .contact-zone { padding-inline: max(2rem, calc((100% - 72rem) / 2)); }
+}
+
+/* ===== Experience (по макету) ===== */
+.panel--exp { padding-block: 4rem; }
+.panel--exp > * { max-width: none; }
+.panel--exp::before {
+  background:
+    linear-gradient(118deg, transparent 52%, rgba(243, 195, 76, .16) 60%, rgba(243, 195, 76, .05) 66%, transparent 74%),
+    radial-gradient(60% 30% at 95% 4%, rgba(243, 195, 76, .16), transparent),
+    radial-gradient(50% 20% at 0% 70%, rgba(243, 195, 76, .06), transparent),
+    var(--bg, #0a0a0b);
+}
+.panel--exp h2 { font-size: 1.05rem; letter-spacing: .16em; margin-bottom: .9rem; }
+.exp-title { margin: 0 0 1.8rem; color: #fff; font-weight: 700; font-size: clamp(1.5rem, 3.2vw, 2.15rem); line-height: 1.2; }
+.exp-title span { display: block; margin-top: .25rem; font-weight: 600; }
+.exp-intro { display: grid; gap: 1.4rem; margin-bottom: 2.5rem; }
+.intro-col { display: flex; align-items: flex-start; gap: 1rem; }
+.intro-ico { flex: none; width: 2.1rem; height: 2.1rem; margin-top: .15rem; fill: none; stroke: #f3c34c; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.panel--exp .mini { margin: 0 0 1rem; color: #f3c34c; letter-spacing: .14em; }
+
+.projects { display: grid; gap: 1.1rem; align-items: start; }
+.project {
+  position: relative; padding: 1.25rem; border-radius: 12px;
+  border: 1px solid rgba(243, 195, 76, .45);
+  background: linear-gradient(160deg, rgba(243, 195, 76, .07), rgba(10, 10, 11, .6) 60%);
+  transition: border-color .2s, box-shadow .2s;
+}
+.project:hover, .project:focus-within { border-color: rgba(243, 195, 76, .8); box-shadow: 0 0 18px rgba(243, 195, 76, .15); }
+.project__ico { position: absolute; top: 1rem; right: 1rem; width: 1.8rem; height: 1.8rem; fill: none; stroke: #f3c34c; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.project__head { display: flex; align-items: baseline; gap: .5rem; padding-right: 2.6rem; }
+.project__no { color: #f3c34c; font-size: 1.5rem; font-weight: 700; line-height: 1; }
+.project h4 { margin: 0; color: #fff; font-size: 1.1rem; font-weight: 700; line-height: 1.25; }
+.project .tag { margin: .7rem 0 .8rem; color: #d9d4c8; font-style: italic; font-size: .95rem; }
+.names { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.names li { color: #fff; font-size: .95rem; line-height: 1.35; }
+.names small { display: block; color: #f3c34c; font-size: .8rem; }
+.project details { margin-top: 1rem; padding-top: .8rem; border-top: 1px solid rgba(255, 255, 255, .12); }
+.project summary { cursor: pointer; list-style: none; color: #f3c34c; font-size: .85rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.project summary::-webkit-details-marker { display: none; }
+.project summary::after { content: " +"; }
+.project details[open] summary::after { content: " \2212"; }
+.project__body { margin-top: .8rem; }
+.item { margin-top: .9rem; padding-top: .8rem; border-top: 1px solid rgba(255, 255, 255, .1); }
+.item:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.item h5 { margin: 0; color: #fff; font-size: 1rem; }
+.item .meta { margin: .1rem 0 .4rem; color: #f3c34c; font-size: .85rem; }
+.project .note { margin-top: .9rem; }
+
+.exp-bg { display: grid; gap: 1.2rem; margin-top: 3rem; }
+.bg-title { margin: 0; color: #fff; font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; line-height: 1.2; }
+.gold-rule { display: block; width: 3.2rem; height: 2px; margin-top: .9rem; background: #f3c34c; }
+
+/* ===== Collaborate: жёлтая рамка, чтобы блок выделялся ===== */
+.panel--collab {
+  width: calc(100% - 2rem); max-width: 64rem; margin: 3rem auto; padding: 2.5rem 1.5rem;
+  border: 1.5px solid rgba(243, 195, 76, .8); border-radius: 18px;
+  background: linear-gradient(135deg, rgba(243, 195, 76, .12), rgba(10, 10, 11, .6) 55%);
+  box-shadow: 0 0 28px rgba(243, 195, 76, .22), inset 0 0 40px rgba(243, 195, 76, .05);
+  overflow: hidden;
+}
+
+/* ===== DJ и Setup: фото маленьким аватаром ===== */
+.duo { display: grid; gap: 2.5rem; padding: 3.5rem 1.5rem; }
+.duo__card p { color: #bdb9b0; }
+.duo__card p + p { margin-top: .9rem; }
+.duo__card h2 { margin-bottom: .7rem; }
+.who { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.who h2 { margin: 0; }
+.avatar {
+  flex: none; width: 5.5rem; height: 5.5rem; border-radius: 50%;
+  object-fit: cover; object-position: 60% 40%;
+  border: 2px solid rgba(243, 195, 76, .7); box-shadow: 0 0 14px rgba(0, 0, 0, .6);
+}
+
+@media (min-width: 48rem) {
+  .projects { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .panel.panel--collab { padding: 3rem 2.5rem; }
+  .duo { grid-template-columns: 1fr 1fr; align-items: start; gap: 3rem; max-width: 72rem; margin: 0 auto; padding: 4rem 2rem; }
+}
+
+
+/* Experience: планшет и ноутбук */
+@media (min-width: 48rem) {
+  .exp-intro { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .exp-bg { grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+}
+@media (min-width: 64rem) {
+  .projects { grid-template-columns: repeat(3, 1fr); }
 }
