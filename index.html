@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0b">
-<title>Leprechaun Lab – Laboratory of Sound Design</title>
-<meta name="description" content="Audio and light solutions for your event: DJ performance, professional sound, lighting and event production in Ireland.">
-<link rel="stylesheet" href="css/style.css?v=20">
-<link rel="stylesheet" href="css/extras.css?v=4">
+<title>Leprechaun Lab – Events &amp; Production in Ireland</title>
+<meta name="description" content="Leprechaun Lab organises music events and provides DJ sets, sound, lighting and technical production in Ireland. Partner with us as a sponsor, artist or venue.">
+<link rel="stylesheet" href="css/style.css?v=21">
+<link rel="stylesheet" href="css/extras.css?v=6">
 </head>
 <body>
 
-<!-- Иконки (один раз, дальше через <use>) -->
+<!-- SVG icons (reusable via <use>) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.5L3 21z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.5-1.8-1.3-2.3-2.3l.8-1-1-2L9 8.5z"/></symbol>
@@ -34,11 +34,11 @@
   </button>
   <nav id="menu" aria-label="Main">
     <a href="#home" aria-current="page">Home</a>
-    <a href="#experience">Experience</a>
-    <a href="#services">Services</a>
-    <a href="#community">Community</a>
+    <a href="#parties">Parties</a>
+    <a href="#projects">Projects</a>
     <a href="#collab">Collaborate</a>
-    <a href="#dj">DJ &amp; Setup</a>
+    <a href="#dj">DJ &amp; Artists</a>
+    <a href="#setup">The Setup</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -47,240 +47,256 @@
   <section id="home" class="hero">
     <div class="logo-fx">
       <div class="steam" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <h1><img src="images/logo-new.png?v=19" width="1024" height="682" alt="Leprechaun Lab – Laboratory of Sound Design"></h1>
+      <h1><img src="images/logo-new.png?v=20" width="1024" height="682" alt="Leprechaun Lab – Events &amp; Production in Ireland"><span class="sr-only">Leprechaun Lab</span></h1>
       <div class="bubbles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     </div>
-    <p class="tagline">Audio &amp; Light Solutions for Your Event</p>
-    <a class="btn btn-shine" href="#services">Explore ↓</a>
+    <p class="positioning">Events &amp; Production in Ireland</p>
+    <p class="hero-sub">Our own music events, DJ sets, sound and light.</p>
+    <div class="hero-actions">
+      <a class="btn btn-shine" href="#contact">Get in touch</a>
+      <a class="link-secondary" href="#collab">Explore partnerships</a>
+    </div>
   </section>
 
-  <section id="experience" class="panel panel--exp">
-    <h2>Our Experience</h2>
-    <p class="exp-title">Experience That Makes a Difference<span>Over 20 Years in Music, Events &amp; Professional Production</span></p>
+  <section id="experience" class="panel panel--wide">
+    <h2>Experience behind the events</h2>
+    <div class="metrics">
+      <div class="metric"><b>20+</b><strong>years in music, events &amp; AV</strong><p>Our founder’s professional experience, since 2003.</p></div>
+      <div class="metric"><b>1,000+</b><strong>guests at past events</strong><p>Audiences at large events our founder has organised in the past.</p></div>
+      <div class="metric"><b>International</b><strong>brand events</strong><p>Sound engineering and lighting operation at Cirque du Soleil and BNP Paribas Russia corporate events.</p></div>
+    </div>
+    <p class="footnote">Figures reflect our founder’s career and past events.</p>
+  </section>
 
-    <div class="exp-intro">
-      <div class="intro-col">
-        <svg class="intro-ico" aria-hidden="true"><use href="#i-wave"/></svg>
-        <div>
-          <p>Great events are built on creativity, experience and attention to detail.</p>
-          <p>Leprechaun Lab brings together more than 20 years of professional experience in event production, music, sound and lighting.</p>
+  <section id="parties" class="panel panel--wide panel--parties">
+    <h2>Our Parties in Ireland</h2>
+    <p class="lead">Music-led nights built around great sound, light and atmosphere.</p>
+    <div class="cols3">
+      <div><h3 class="mini">The concept</h3><p>Our parties put the music and the room first. We pair a carefully chosen DJ line-up with professional sound and lighting, so the night feels like an experience, not just a playlist.</p></div>
+      <div><h3 class="mini">Who it’s for</h3><p>We design our parties for people who come for the music: dance-floor regulars, music lovers and friends looking for a night out with a bit more character. Brands that want to meet this crowd are welcome to talk to us.</p></div>
+      <div><h3 class="mini">The atmosphere</h3><p>Clear, powerful sound, lighting that follows the music and a room that feels immersive. People come to dance, discover new music and share a night that feels special.</p></div>
+    </div>
+    <div class="actions"><a class="btn" href="#brands">Discuss sponsorship</a></div>
+  </section>
+
+  <section id="projects" class="panel panel--wide">
+    <div class="projects-header">
+      <div>
+        <h2>Selected Projects</h2>
+        <p class="lead">Past events, technical production and audiovisual installations.</p>
+      </div>
+      <div class="carousel-nav" aria-label="Project carousel controls">
+        <button type="button" class="carousel-btn" id="prevProjects" aria-label="Previous slide" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <span class="carousel-counter" id="projectsCounter" aria-live="polite">1 / 2</span>
+        <button type="button" class="carousel-btn" id="nextProjects" aria-label="Next slide">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="projects-carousel" id="projectsCarousel">
+      <div class="projects-slider" id="projectsSlider">
+        <!-- Slide 1: 6 projects -->
+        <div class="projects-slide" data-slide="1">
+          <!-- Card 1 -->
+          <article class="project-card">
+            <h4>Electronic Music Festivals</h4>
+            <p class="project-card__tag"><em>Shamanin Dram &amp; Tunguska Meteorite · Sea of Azov &amp; Crimea, Ukraine</em></p>
+            <details class="project-card__details">
+              <summary class="btn-more"><span class="btn-more__text">More</span></summary>
+              <div class="project-card__body">
+                <p>Two independently organised open-air electronic music festivals. Shamanin Dram took place on the Sea of Azov coast, bringing together underground electronic artists, live performers and festival audiences.</p>
+                <p class="role">Founder’s role: event production, technical coordination and live DJ sets.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="project-card">
+            <h4>Cirque du Soleil</h4>
+            <p class="project-card__tag"><em>Corporate Christmas event · Winzavod Center for Contemporary Art, Moscow</em></p>
+            <details class="project-card__details">
+              <summary class="btn-more"><span class="btn-more__text">More</span></summary>
+              <div class="project-card__body">
+                <p>A high-profile corporate celebration featuring theatrical performances and immersive staging at the Winzavod contemporary art center.</p>
+                <p class="role">Founder’s role: sound engineering and lighting operation.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="project-card">
+            <h4>BNP Paribas Russia</h4>
+            <p class="project-card__tag"><em>Corporate gala event · Rai Nightclub, Moscow</em></p>
+            <details class="project-card__details">
+              <summary class="btn-more"><span class="btn-more__text">More</span></summary>
+              <div class="project-card__body">
+                <p>Large-scale corporate celebration for international banking group BNP Paribas, hosted at one of Moscow’s flagship nightlife venues.</p>
+                <p class="role">Founder’s role: sound engineering and lighting operation.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="project-card">
+            <h4>St. Valentine’s Night</h4>
+            <p class="project-card__tag"><em>Commercial dance music events · Melitopol, Ukraine</em></p>
+            <details class="project-card__details">
+              <summary class="btn-more"><span class="btn-more__text">More</span></summary>
+              <div class="project-card__body">
+                <p>Two independently organised commercial music events staged at Melitopol Restaurant and Maska Café-Bar, each drawing over 1,000 guests.</p>
+                <p class="role">Founder’s role: event organisation, production coordination and live DJ performance.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="project-card">
+            <h4>Gorbushka Concert Venue</h4>
+            <p class="project-card__tag"><em>Concert hall technical modernisation · Moscow</em></p>
+            <details class="project-card__details">
+              <summary class="btn-more"><span class="btn-more__text">More</span></summary>
+              <div class="project-card__body">
+                <p>Reconstruction and technical modernisation of the legendary concert hall, configuring professional concert sound reinforcement and dynamic stage lighting systems.</p>
+                <p class="role">Founder’s role: AV systems engineering and installation coordination.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="project-card">
+            <h4>Sound &amp; Lighting Installations</h4>
+            <p class="project-card__tag"><em>Clubs, restaurants &amp; entertainment venues · Ukraine &amp; Crimea</em></p>
+            <details class="project-card__details">
+              <summary class="btn-more"><span class="btn-more__text">More</span></summary>
+              <div class="project-card__body">
+                <p>Turnkey acoustic and lighting systems for high-capacity venues, including Korsar Nightclub in Vasylkiv, Doctor Nagual Club and Pioneer Bowling Club in Simferopol, Horets Restaurant in Yalta, Baron Nightclub in Feodosia, and a 400-seat cinema in Crimea.</p>
+                <p class="role">Founder’s role: technical design, turnkey equipment delivery and commissioning.</p>
+              </div>
+            </details>
+          </article>
+        </div>
+
+        <!-- Slide 2: 2 projects -->
+        <div class="projects-slide" data-slide="2">
+          <!-- Card 7 -->
+          <article class="project-card">
+            <h4>Corporate Audiovisual Solutions</h4>
+            <p class="project-card__tag"><em>Enterprise &amp; institutional AV · AVL Trading, Warsaw, Poland</em></p>
+            <details class="project-card__details">
+              <summary class="btn-more"><span class="btn-more__text">More</span></summary>
+              <div class="project-card__body">
+                <p>Commercial audiovisual and conference systems for corporate and public-sector environments, including Onet headquarters with dozens of connected conference rooms and facilities for Polish public institutions.</p>
+                <p class="role">Founder’s role: system design, equipment selection and turnkey project delivery.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Card 8 -->
+          <article class="project-card">
+            <h4>DJ Performance &amp; Club Nights</h4>
+            <p class="project-card__tag"><em>Live DJ sets, club openings &amp; festivals · Ukraine &amp; Europe</em></p>
+            <details class="project-card__details">
+              <summary class="btn-more"><span class="btn-more__text">More</span></summary>
+              <div class="project-card__body">
+                <p>Extensive performance track record across major club launches, commercial dance parties and private events, including the grand opening of Pharaoh Nightclub in Luhansk and landmark annual X-Mas Party events in Melitopol.</p>
+                <p class="role">Founder’s role: resident and guest DJ, musical curation and sound direction.</p>
+              </div>
+            </details>
+          </article>
         </div>
       </div>
-      <div class="intro-col">
-        <svg class="intro-ico" aria-hidden="true"><use href="#i-star"/></svg>
-        <div>
-          <p>Since 2003, our founder has worked across the entertainment and audiovisual industries, combining event organisation, technical expertise and live DJ performance.</p>
-          <p>From independent electronic music festivals and large-scale parties to concert venues, corporate events and professional audiovisual installations, this experience provides the foundation for everything we do today.</p>
-        </div>
-      </div>
     </div>
 
-    <h3 class="mini">Selected projects</h3>
-    <div class="projects">
-
-      <article class="project">
-        <svg class="project__ico" aria-hidden="true"><use href="#i-wave"/></svg>
-        <div class="project__head"><span class="project__no">01.</span><h4>Electronic Music Festivals</h4></div>
-        <p class="tag">Creating events. Building experiences.</p>
-        <ul class="names">
-          <li>Shamanin Dram Festival<small>Ukraine | 2006</small></li>
-          <li>Tunguska Meteorite Festival<small>Ukraine | 2007–2008</small></li>
-        </ul>
-        <details>
-          <summary>Details</summary>
-          <div class="project__body">
-            <div class="item"><h5>Shamanin Dram Festival</h5><p class="meta">Ukraine | 2006</p><p>Independent production of an electronic music festival on the Sea of Azov coast, combining event planning, technical coordination and live DJ performance.</p></div>
-            <div class="item"><h5>Tunguska Meteorite Festival</h5><p class="meta">Ukraine | 2007–2008 (year to be confirmed)</p><p>An independently organised electronic music festival, with the founder taking responsibility for event production while also performing as a DJ.</p></div>
-          </div>
-        </details>
-      </article>
-
-      <article class="project">
-        <svg class="project__ico" aria-hidden="true"><use href="#i-notes"/></svg>
-        <div class="project__head"><span class="project__no">02.</span><h4>Large-Scale Music Events</h4></div>
-        <p class="tag">Bringing people together through music.</p>
-        <ul class="names">
-          <li>St. Valentine’s Night<small>Melitopol, Ukraine</small></li>
-          <li>More than 1,000 guests at each event</li>
-        </ul>
-        <details>
-          <summary>Details</summary>
-          <div class="project__body">
-            <div class="item"><h5>St. Valentine’s Night</h5><p class="meta">Melitopol, Ukraine</p><p>Two independently organised commercial music events at Melitopol Restaurant and Maska Café-Bar, each attracting an audience of more than 1,000 guests.</p><p>The founder combined event organisation, production coordination and live DJ performance.</p></div>
-          </div>
-        </details>
-      </article>
-
-      <article class="project">
-        <svg class="project__ico" aria-hidden="true"><use href="#i-gear"/></svg>
-        <div class="project__head"><span class="project__no">03.</span><h4>Corporate Events</h4></div>
-        <p class="tag">Professional production for memorable occasions.</p>
-        <ul class="names">
-          <li>BNP Paribas Russia<small>Rai Nightclub, Moscow</small></li>
-          <li>Cirque du Soleil<small>Winzavod, Moscow</small></li>
-        </ul>
-        <details>
-          <summary>Details</summary>
-          <div class="project__body">
-            <div class="item"><h5>BNP Paribas Russia</h5><p class="meta">Rai Nightclub, Moscow</p><p>Sound engineering and lighting operation for a corporate event.</p></div>
-            <div class="item"><h5>Cirque du Soleil</h5><p class="meta">Winzavod, Moscow</p><p>Sound engineering and lighting operation for a corporate Christmas event.</p></div>
-            <p class="note">These projects reflect hands-on experience in delivering professional technical support for corporate entertainment.</p>
-          </div>
-        </details>
-      </article>
-
-      <article class="project">
-        <svg class="project__ico" aria-hidden="true"><use href="#i-tower"/></svg>
-        <div class="project__head"><span class="project__no">04.</span><h4>Professional Sound &amp; Lighting Installations</h4></div>
-        <p class="tag">Technical knowledge behind the experience.</p>
-        <ul class="names">
-          <li>Gorbushka Concert Venue<small>Moscow</small></li>
-          <li>Clubs, restaurants, entertainment venues and a 400-seat cinema</li>
-        </ul>
-        <details>
-          <summary>Details</summary>
-          <div class="project__body">
-            <div class="item"><h5>Gorbushka Concert Venue</h5><p class="meta">Moscow</p><p>Participation in the reconstruction and technical modernisation of a major concert venue, working with professional sound and lighting systems.</p></div>
-            <p class="note">Additional projects include sound and lighting installations for clubs, restaurants and entertainment venues, including Korsar Nightclub in Vasylkiv, Doctor Nagual Club and Pioneer Bowling Club in Simferopol, Horets Restaurant in Yalta, Baron Nightclub in Feodosia and a 400-seat cinema in Crimea.</p>
-          </div>
-        </details>
-      </article>
-
-      <article class="project">
-        <svg class="project__ico" aria-hidden="true"><use href="#i-screen"/></svg>
-        <div class="project__head"><span class="project__no">05.</span><h4>Corporate Audiovisual Solutions</h4></div>
-        <p class="tag">Experience beyond entertainment.</p>
-        <ul class="names">
-          <li>AVL Trading<small>Warsaw, Poland | 2019</small></li>
-          <li>Onet corporate offices and Polish public institutions</li>
-        </ul>
-        <details>
-          <summary>Details</summary>
-          <div class="project__body">
-            <div class="item"><h5>AVL Trading</h5><p class="meta">Warsaw, Poland | 2019</p><p>Professional audiovisual and conference system installations for corporate and public-sector environments.</p></div>
-            <p class="note">Projects included Onet corporate offices, involving several dozen meeting rooms and conference facilities, alongside installations for Polish public institutions.</p>
-          </div>
-        </details>
-      </article>
-
-      <article class="project">
-        <svg class="project__ico" aria-hidden="true"><use href="#i-phones"/></svg>
-        <div class="project__head"><span class="project__no">06.</span><h4>DJ Performance &amp; Music</h4></div>
-        <p class="tag">Music is more than a service. It’s part of our background.</p>
-        <ul class="names">
-          <li>Festivals, club openings, commercial parties and private events</li>
-        </ul>
-        <details>
-          <summary>Details</summary>
-          <div class="project__body">
-            <p>Alongside event production and technical work, our founder has performed as a DJ at electronic music festivals, club openings, commercial parties and private events.</p>
-            <p class="note">Selected appearances include the opening of Pharaoh Nightclub in Luhansk, X-Mas Party events in Melitopol, Shamanin Dram, Tunguska Meteorite and St. Valentine’s Night events.</p>
-            <p class="note">This combination of artistic and technical experience brings a deeper understanding of music, atmosphere and audience engagement.</p>
-          </div>
-        </details>
-      </article>
-
-    </div>
-
-    <div class="exp-bg">
-      <div class="bg-left">
-        <h3 class="mini">Professional background</h3>
-        <p class="bg-title">Built on Practical Experience</p>
-        <span class="gold-rule" aria-hidden="true"></span>
-      </div>
-      <div class="bg-right">
-        <p>Our founder’s professional career began in 2003 and includes technical, commercial and management roles within the audiovisual industry.</p>
-        <p>His experience includes work with MCS, ISPA Ukraine, ISPA Engineering and AVL Trading, as well as leadership of a Turnkey Solutions Department.</p>
-        <p>Over the years, his responsibilities have covered technical consultation, professional equipment selection, system design, sales, installation coordination and project delivery.</p>
-      </div>
+    <div class="carousel-dots" id="projectsDots" aria-label="Slide navigation">
+      <button type="button" class="carousel-dot active" data-slide-to="0" aria-label="Slide 1"></button>
+      <button type="button" class="carousel-dot" data-slide-to="1" aria-label="Slide 2"></button>
     </div>
   </section>
 
-  <section id="services" class="services">
-    <article class="service service--stage">
-      <h2>Creative Space</h2>
-      <p>We create environments where music, light and technology come together.</p>
-    </article>
-
-    <article class="service service--idea">
-      <h2>From idea to event</h2>
-      <p>A full creative and technical journey — from concept and design to flawless execution.</p>
-    </article>
-
-    <article class="service service--mixer">
-      <h2>Full-cycle production</h2>
-      <p>Sound • Lighting • Visuals • Technical Support</p>
-    </article>
-  </section>
-
-  <section id="community" class="panel panel--community">
-    <h2>Our Artist Community</h2>
-    <p class="lead">A growing circle of artists who share the same passion for music.</p>
-    <div class="artists">
-      <article class="artist">
-        <h3>DJ SANDROO</h3>
-        <div class="social-links">
-          <a class="social" href="https://soundcloud.com/iamsandroo" target="_blank" rel="noopener" aria-label="DJ SANDROO on SoundCloud"><svg class="ico" aria-hidden="true"><use href="#i-soundcloud"/></svg></a>
-          <a class="social" href="https://www.instagram.com/sandroo_music/" target="_blank" rel="noopener" aria-label="DJ SANDROO on Instagram"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg></a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="collab" class="panel panel--collab">
+  <section id="collab" class="panel panel--wide">
     <h2>Collaborate with us</h2>
-    <p class="lead">Let’s Make Something Together</p>
-    <p>Leprechaun Lab is always open to working with people who share our passion for music, sound and live experiences. We’re looking for DJs, musicians, vocalists, live performers, MCs, visual artists and fellow event professionals to create something memorable together.</p>
-
-    <h3 class="mini">Who we’d love to hear from</h3>
-    <ul class="list">
-      <li>DJs and producers: guest sets, back-to-back sessions and joint club nights</li>
-      <li>Musicians, vocalists and live acts: live performances for private and corporate events</li>
-      <li>MCs and hosts: extra energy for the night</li>
-      <li>Visual artists and VJs: visuals and light shows that move with the music</li>
-      <li>Sound and lighting technicians: sharing expertise and joining projects</li>
-      <li>Venues, promoters and event organisers: partnerships and recurring events</li>
-    </ul>
-
-    <h3 class="mini">What it can look like</h3>
-    <p>Joint events and showcases, shared bookings, studio and production projects, or simply a conversation about what we could build together.</p>
-
-    <h3 class="mini">Get in touch</h3>
-    <p>Send us a few lines about yourself, a link to your music or portfolio, and your idea. We’ll get back to you as soon as we can.</p>
-    <div class="actions">
-      <a class="btn btn-sm" href="mailto:leprechaunlabie@gmail.com?subject=Collaboration">Email us</a>
-      <a class="btn btn-sm" href="https://wa.me/353899752408?text=Hi%21%20I%27d%20like%20to%20talk%20about%20collaboration." target="_blank" rel="noopener">WhatsApp</a>
+    <p class="lead">Two ways to work with Leprechaun Lab.</p>
+    <div class="offers">
+      <article id="brands" class="offer">
+        <h3>For Brands &amp; Sponsors</h3>
+        <p>Want to meet an audience that cares about music, sound and atmosphere? Let’s talk about the possibilities:</p>
+        <ul class="list"><li>Sponsoring a party</li><li>Integrating your brand into an event</li><li>Creating a joint event</li></ul>
+        <p>Every collaboration is shaped around your goals and budget.</p>
+        <div class="actions"><a class="btn btn-sm" href="mailto:leprechaunlabie@gmail.com?subject=Sponsorship%20enquiry">Discuss sponsorship</a></div>
+      </article>
+      <article id="artists-venues" class="offer">
+        <h3>For Artists &amp; Venues</h3>
+        <p>DJs, live acts and venues, let’s build something together:</p>
+        <ul class="list"><li>Guest sets</li><li>Joint club nights</li><li>Showcases</li><li>Ongoing collaboration with venues</li></ul>
+        <p>Tell us about yourself, share a link to your music or venue, and describe your idea.</p>
+        <div class="actions"><a class="btn btn-sm" href="mailto:leprechaunlabie@gmail.com?subject=Artist%20%26%20venue%20collaboration">Propose a collaboration</a><a class="link-secondary" href="https://wa.me/353899752408?text=Hi%21%20I%27d%20like%20to%20propose%20a%20collaboration." target="_blank" rel="noopener">or message on WhatsApp</a></div>
+      </article>
     </div>
   </section>
 
-  <section id="dj" class="duo">
-    <article class="duo__card">
-      <div class="who">
-        <img class="avatar" src="images/dj.jpg" width="549" height="563" alt="DJ Rabbit in a flat cap, black-and-white portrait" loading="lazy">
-        <h2>Your DJ for Every Event</h2>
+  <section id="dj" class="panel panel--wide">
+    <div class="founder">
+      <img class="avatar avatar-lg" src="images/dj.jpg" width="549" height="563" alt="DJ Rabbit in a flat cap, black-and-white portrait" loading="lazy">
+      <div>
+        <h2>DJ Rabbit</h2>
+        <p class="role-line">Founder · Art Director · Headliner</p>
       </div>
-      <p>I’m DJ Rabbit, an open-format DJ with over 20 years of professional experience.</p>
-      <p>From underground techno to corporate and private events, I build sets around your audience, creating the right atmosphere for every occasion.</p>
-      <p>Based in Ireland, available nationwide for clubs, corporate parties, private celebrations and special events.</p>
-    </article>
+    </div>
+    <p>With over 20 years of experience behind the decks and in event production, DJ Rabbit sets the musical direction of Leprechaun Lab. From underground techno to corporate and private events, every open-format set is built around the audience, and his production background means music, sound and light are planned together.</p>
+    <p>Based in Ireland, available nationwide for clubs, corporate parties, private celebrations and special events.</p>
 
-    <article id="setup" class="duo__card">
-      <h2>The Setup</h2>
-      <p>Professional sound and lighting package for indoor events of up to 100 guests: premium-quality sound with a professional Electro-Voice ETX Sound System, Roland DJ-707M controller, Shure microphone, lighting including two Stairville Moving Head Spot 250s, a UV lamp, strobe, and LED wash lighting (exact quantity to be confirmed).</p>
-      <p>Any style of music from jazz to modern dance.</p>
-      <p>Available as a complete DJ + sound + lighting package for corporate events, bars, clubs, and private parties, including Christmas and New Year celebrations.</p>
-    </article>
+    <section id="community" class="community">
+      <h3 class="mini">Artist Community</h3>
+      <div class="artists">
+        <article class="artist">
+          <h3>DJ SANDROO</h3>
+          <div class="social-links">
+            <a class="social" href="https://soundcloud.com/iamsandroo" target="_blank" rel="noopener" aria-label="DJ SANDROO on SoundCloud"><svg class="ico" aria-hidden="true"><use href="#i-soundcloud"/></svg></a>
+            <a class="social" href="https://www.instagram.com/sandroo_music/" target="_blank" rel="noopener" aria-label="DJ SANDROO on Instagram"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </section>
+
+  <section id="setup" class="panel panel--wide">
+    <span id="services" class="anchor" aria-hidden="true"></span>
+    <h2>The Setup</h2>
+    <p class="lead">One team for the music, the sound and the light.</p>
+    <p>We bring our own professional sound and lighting. When our standard setup suits your venue, the same team that plays the music also looks after how the room sounds and feels, so there are fewer separate suppliers to hire and coordinate. Our current setup is designed for indoor events of up to 100 guests, and can be combined with a DJ set for any style of music, from jazz to modern dance.</p>
+    <div class="cols3 points">
+      <div><h3 class="mini">Creative Space</h3><p>We create environments where music, light and technology come together.</p></div>
+      <div><h3 class="mini">From idea to event</h3><p>A full creative and technical journey, from concept and design to flawless execution.</p></div>
+      <div><h3 class="mini">Full-cycle production</h3><p>Sound, lighting, visuals and technical support in one place.</p></div>
+    </div>
+    <details class="more">
+      <summary>Technical specification</summary>
+      <div class="more__body">
+        <ul class="list">
+          <li>Sound: Electro-Voice ETX professional sound system</li>
+          <li>DJ controller: Roland DJ-707M</li>
+          <li>Microphone: Shure</li>
+          <li>Lighting: two Stairville Moving Head Spot 250s, UV lamp, strobe and LED wash lighting</li>
+        </ul>
+        <p>Available as a complete DJ, sound and lighting package for corporate events, bars, clubs and private parties, including Christmas and New Year celebrations.</p>
+      </div>
+    </details>
   </section>
 
   <div class="contact-zone">
     <section id="contact">
       <h2>Contact</h2>
       <p class="lead">Let’s Create Something Memorable</p>
-      <p>Planning an event? Tell us your idea, date, location and expected number of guests.</p>
-      <p>We’ll help you explore the possibilities and develop a solution suited to your vision and budget.</p>
+      <p>Tell us the date, venue or city, roughly how many guests you expect and your idea for the event.</p>
+      <div class="contact-actions">
+        <a class="btn btn-lg" href="https://wa.me/353899752408?text=Hi%21%20I%27d%20like%20to%20ask%20about%20your%20DJ%20and%20sound%20%26%20lighting%20services." target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-lg btn-outline" href="mailto:leprechaunlabie@gmail.com?subject=Event%20enquiry">Email</a>
+      </div>
       <ul class="contacts glass">
         <li><a href="mailto:leprechaunlabie@gmail.com?subject=Event%20enquiry"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>leprechaunlabie@gmail.com</a></li>
-        <li><a href="https://wa.me/353899752408?text=Hi%21%20I%27d%20like%20to%20ask%20about%20your%20DJ%20and%20sound%20%26%20lighting%20services." target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a></li>
         <li><span><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Limerick, Ireland · Available nationwide</span></li>
       </ul>
     </section>
@@ -296,7 +312,7 @@
   });
   menu.addEventListener('click', e => { if (e.target.tagName === 'A') close(); });
 
-  // Подсветка пункта меню по прокрутке
+  // Highlight active menu item on scroll
   const links = [...menu.querySelectorAll('a')];
   const setActive = id => links.forEach(a =>
     a.getAttribute('href') === '#' + id ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
@@ -307,11 +323,11 @@
     if (innerHeight + scrollY >= document.body.offsetHeight - 2) setActive('contact');
   }, { passive: true });
 
-  // Пар и пузырьки: пауза, когда логотип не на экране
+  // Steam and bubbles: pause when logo is off-screen
   const fx = document.querySelector('.logo-fx');
   if (fx) new IntersectionObserver(([e]) => fx.classList.toggle('is-off', !e.isIntersecting)).observe(fx);
 
-  // Блик: пробегает, когда заголовок или кнопка появляются на экране, и при прокрутке
+  // Shimmer effect: trigger on view and scroll
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const shiny = document.querySelectorAll('main h2:not(.sr-only), .btn-shine');
     const onScreen = new Set();
@@ -331,6 +347,61 @@
       onScreen.forEach(sweep);
     }, { passive: true });
   }
+
+  // Selected Projects Carousel & Card Details
+  (function initProjectsCarousel() {
+    const slider = document.getElementById('projectsSlider');
+    const prevBtn = document.getElementById('prevProjects');
+    const nextBtn = document.getElementById('nextProjects');
+    const counter = document.getElementById('projectsCounter');
+    const dots = document.querySelectorAll('#projectsDots .carousel-dot');
+    if (!slider || !prevBtn || !nextBtn) return;
+
+    const totalSlides = 2;
+    let currentSlide = 0;
+
+    function goToSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= totalSlides) index = totalSlides - 1;
+      currentSlide = index;
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+      if (counter) counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === totalSlides - 1;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+        dot.setAttribute('aria-current', i === currentSlide ? 'true' : 'false');
+      });
+    }
+
+    prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => goToSlide(i));
+    });
+
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    slider.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 45) {
+        if (diff > 0) goToSlide(currentSlide + 1);
+        else goToSlide(currentSlide - 1);
+      }
+    }, { passive: true });
+
+    document.querySelectorAll('.project-card__details').forEach(details => {
+      const textSpan = details.querySelector('.btn-more__text');
+      if (textSpan) {
+        details.addEventListener('toggle', () => {
+          textSpan.textContent = details.open ? 'Less' : 'More';
+        });
+      }
+    });
+  })();
 </script>
 </body>
 </html>
