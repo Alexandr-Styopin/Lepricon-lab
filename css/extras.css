@@ -237,15 +237,21 @@ main h2:not(.sr-only) {
   display: grid;
   gap: 1.25rem;
   margin-top: 1.5rem;
+  align-items: stretch;
 }
 .metric {
   position: relative;
-  padding: 1.4rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.35rem 1.25rem;
   border: 1px solid rgba(243, 195, 76, .35);
   border-radius: 14px;
   background: linear-gradient(160deg, rgba(243, 195, 76, .08), rgba(10, 10, 11, .75) 60%);
   box-shadow: 0 4px 18px rgba(0, 0, 0, .45);
   transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .metric:hover {
   border-color: rgba(243, 195, 76, .85);
@@ -255,24 +261,53 @@ main h2:not(.sr-only) {
 .metric b {
   display: block;
   color: #f3c34c;
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   font-weight: 800;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -.02em;
+}
+.metric b.metric__word,
+.metric:nth-child(3) b {
+  font-size: 1.42rem;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  padding-top: .35rem;
+  white-space: nowrap;
 }
 .metric strong {
   display: block;
-  margin: .45rem 0 .35rem;
+  margin: .45rem 0 .4rem;
   color: #ffffff;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 600;
   line-height: 1.3;
 }
 .metric p {
-  font-size: .92rem;
+  font-size: .88rem;
   color: #d6d2c8;
   line-height: 1.5;
   margin: 0;
+  margin-top: auto;
+  padding-top: .35rem;
+}
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .metric {
+    padding: 1.2rem 1.05rem;
+  }
+  .metric b {
+    font-size: 1.85rem;
+  }
+  .metric b.metric__word,
+  .metric:nth-child(3) b {
+    font-size: 1.15rem;
+    padding-top: .25rem;
+  }
+  .metric strong {
+    font-size: .95rem;
+  }
+  .metric p {
+    font-size: .84rem;
+  }
 }
 .footnote {
   margin-top: 1.2rem;
@@ -811,23 +846,59 @@ details[open] > summary.btn-more::after {
 }
 
 /* ===== Production Points (Creative Space, From Idea to Event) ===== */
-.points { margin-top: 1.2rem; }
+.points {
+  margin-top: 1.25rem;
+  align-items: stretch;
+}
 .points > div {
-  padding: .85rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  padding: .95rem 1.1rem;
   border-left: 2px solid #f3c34c;
-  background: rgba(10, 10, 11, .45);
+  background: rgba(10, 10, 11, .55);
   border-radius: 0 10px 10px 0;
+  box-sizing: border-box;
+  height: 100%;
 }
 .points .mini {
-  margin: 0 0 .3rem;
+  margin: 0 0 .35rem;
   font-size: .95rem;
   color: #ffffff;
   letter-spacing: .06em;
 }
 .points p {
   font-size: .88rem;
-  line-height: 1.45;
+  line-height: 1.48;
+  color: #d6d2c8;
   margin: 0;
+}
+/* Ensure 3 in a row on both Desktop and Tablet, stacked on Mobile */
+@media (min-width: 48rem) {
+  .cols3.points, .points {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1.15rem;
+  }
+}
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .cols3.points, .points {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: .85rem;
+  }
+  .points > div {
+    padding: .85rem .95rem;
+  }
+  .points .mini {
+    font-size: .9rem;
+  }
+  .points p {
+    font-size: .84rem;
+  }
+}
+@media (max-width: 47.99rem) {
+  .cols3.points, .points {
+    grid-template-columns: 1fr !important;
+    gap: .85rem;
+  }
 }
 
 /* ===== Section 8: Contact Section ===== */
