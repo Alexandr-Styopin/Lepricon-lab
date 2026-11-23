@@ -7,7 +7,7 @@
 <title>Leprechaun Lab – Events &amp; Production in Ireland</title>
 <meta name="description" content="Leprechaun Lab organises music events and provides DJ sets, sound, lighting and technical production in Ireland. Partner with us as a sponsor, artist or venue.">
 <link rel="stylesheet" href="css/style.css?v=21">
-<link rel="stylesheet" href="css/extras.css?v=15">
+<link rel="stylesheet" href="css/extras.css?v=16">
 </head>
 <body>
 
@@ -66,7 +66,6 @@
       <div class="metric"><b>1,000+</b><strong>guests at past events</strong><p>Audiences at large events our founder has organised in the past.</p></div>
       <div class="metric"><b class="metric__word">International</b><strong>brand events</strong><p>Sound engineering and lighting operation at Cirque du Soleil and BNP Paribas Russia corporate events.</p></div>
     </div>
-    <p class="footnote">Figures reflect our founder’s career and past events.</p>
   </section>
 
   <section id="approach" class="panel panel--wide">
@@ -464,11 +463,35 @@
     const prevBtn = document.getElementById('prevProjects');
     const nextBtn = document.getElementById('nextProjects');
     const counter = document.getElementById('projectsCounter');
-    const dots = document.querySelectorAll('#projectsDots .carousel-dot');
+    const dotsContainer = document.getElementById('projectsDots');
     if (!slider || !prevBtn || !nextBtn) return;
 
-    const totalSlides = 2;
+    const cards = Array.from(slider.querySelectorAll('.project-card'));
+    let totalSlides = 2;
     let currentSlide = 0;
+    let currentMode = '';
+
+    function getMode() {
+      const w = window.innerWidth;
+      if (w < 768) return 'mobile';
+      if (w < 1024) return 'tablet';
+      return 'desktop';
+    }
+
+    function renderDots() {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'carousel-dot' + (i === currentSlide ? ' active' : '');
+        btn.setAttribute('data-slide-to', i);
+        btn.setAttribute('aria-label', `Slide ${i + 1}`);
+        if (i === currentSlide) btn.setAttribute('aria-current', 'true');
+        btn.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(btn);
+      }
+    }
 
     function goToSlide(index) {
       if (index < 0) index = 0;
@@ -478,18 +501,39 @@
       if (counter) counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
       prevBtn.disabled = currentSlide === 0;
       nextBtn.disabled = currentSlide === totalSlides - 1;
+      const dots = document.querySelectorAll('#projectsDots .carousel-dot');
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentSlide);
         dot.setAttribute('aria-current', i === currentSlide ? 'true' : 'false');
       });
     }
 
+    function buildSlides() {
+      const mode = getMode();
+      let perPage = 6;
+      if (mode === 'tablet') perPage = 3; // Exactly 3 cards visible on tablet
+      else if (mode === 'mobile') perPage = 1; // 1 card on mobile
+
+      currentMode = mode;
+      totalSlides = Math.ceil(cards.length / perPage);
+      if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+
+      slider.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const slide = document.createElement('div');
+        slide.className = 'projects-slide';
+        slide.setAttribute('data-slide', i + 1);
+        const slice = cards.slice(i * perPage, (i + 1) * perPage);
+        slice.forEach(card => slide.appendChild(card));
+        slider.appendChild(slide);
+      }
+
+      renderDots();
+      goToSlide(currentSlide);
+    }
+
     prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
     nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => goToSlide(i));
-    });
 
     let touchStartX = 0;
     slider.addEventListener('touchstart', e => {
@@ -503,16 +547,23 @@
       }
     }, { passive: true });
 
-    // Handle window resize cleanly without slide distortion
+    // Handle window resize cleanly across breakpoints
     let resizeTimer;
     window.addEventListener('resize', () => {
-      slider.style.transition = 'none';
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        slider.style.transition = '';
+        if (getMode() !== currentMode) {
+          buildSlides();
+        } else {
+          slider.style.transition = 'none';
+          slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+          setTimeout(() => { slider.style.transition = ''; }, 50);
+        }
       }, 100);
     });
+
+    // Initial responsive setup
+    buildSlides();
 
     document.querySelectorAll('.project-card__details').forEach(details => {
       const textSpan = details.querySelector('.btn-more__text');

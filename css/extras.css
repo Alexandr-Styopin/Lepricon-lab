@@ -213,7 +213,7 @@ main h2:not(.sr-only) {
   .panel--wide > * { max-width: 44rem; margin-inline: auto; }
   .panel p { max-width: 40rem; }
   .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-  .cols3 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; }
+  .cols3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
   .offers { grid-template-columns: 1fr; gap: 1.25rem; }
 }
 
@@ -334,6 +334,58 @@ main h2:not(.sr-only) {
 }
 .panel .actions { margin-top: 1.6rem; }
 
+#parties .cols3 {
+  align-items: stretch;
+}
+#parties .cols3 > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* #parties on Desktop & Tablet: 3 in a row, centered heading & lead, centered yellow button */
+@media (min-width: 48rem) {
+  #parties h2,
+  #parties .lead {
+    text-align: center;
+    margin-inline: auto;
+  }
+  #parties .lead {
+    max-width: 44rem;
+  }
+  #parties .cols3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1.25rem;
+  }
+  #parties .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2.2rem;
+  }
+  #parties .actions .btn {
+    margin-inline: auto;
+  }
+}
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  #parties .cols3 {
+    gap: 1rem;
+  }
+}
+@media (max-width: 47.99rem) {
+  #parties .cols3 {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem;
+  }
+  #parties .actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1.8rem;
+  }
+}
+
 /* ===== Section 4: Selected Projects Carousel (8 Cards, 6 Visible on Desktop) ===== */
 .projects-header {
   display: flex;
@@ -422,8 +474,8 @@ main h2:not(.sr-only) {
 }
 @media (min-width: 48rem) and (max-width: 63.99rem) {
   .projects-slide {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.15rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
   }
 }
 @media (max-width: 47.99rem) {
