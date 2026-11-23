@@ -703,57 +703,104 @@ details[open] > summary.btn-more::after {
   font-style: italic;
 }
 
-/* Standalone Artist Community section */
+/* ===== Section 7: Artist Community ===== */
 .community-section {
-  padding-top: 2.5rem;
+  padding-top: 3.5rem;
+  padding-bottom: 2.5rem;
+}
+.community-section h2,
+.community-section .lead {
+  text-align: left;
 }
 .artists {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+  margin-top: 1.4rem;
+  width: 100%;
+}
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .artists {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .85rem;
+  }
+}
+@media (max-width: 47.99rem) {
+  .artists {
+    grid-template-columns: 1fr;
+    gap: .75rem;
+  }
 }
 .artist {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 1.2rem;
-  padding: .6rem 1.15rem;
+  justify-content: space-between;
+  padding: .75rem 1.2rem;
   border: 1px solid rgba(243, 195, 76, .45);
   border-radius: 999px;
-  background: rgba(10, 10, 11, .6);
+  background: rgba(10, 10, 11, .65);
   box-shadow: 0 2px 10px rgba(0, 0, 0, .4);
+  transition: border-color .2s ease, background .2s ease;
+  box-sizing: border-box;
+}
+.artist:hover {
+  border-color: rgba(243, 195, 76, .85);
+  background: rgba(16, 15, 12, .85);
 }
 .artist h3 {
   margin: 0;
   color: #ffffff;
-  font-size: 1rem;
+  font-size: .95rem;
   letter-spacing: .05em;
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.social-links { display: flex; gap: .55rem; }
+.artist--tba {
+  border: 1px dashed rgba(243, 195, 76, .28);
+  background: rgba(10, 10, 11, .4);
+  opacity: .75;
+}
+.artist--tba:hover {
+  border-color: rgba(243, 195, 76, .55);
+}
+.artist--tba h3 {
+  color: #a8a398;
+}
+.social-links { display: flex; gap: .5rem; flex: none; }
 .social {
   display: grid;
   place-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 2.15rem;
+  height: 2.15rem;
   border-radius: 50%;
-  border: 1px solid rgba(243, 195, 76, .55);
+  border: 1px solid rgba(243, 195, 76, .5);
   background: rgba(10, 10, 11, .5);
-  transition: transform .2s, box-shadow .2s;
+  transition: border-color .2s, box-shadow .2s;
+  text-decoration: none;
 }
-.social:hover, .social:focus-visible {
-  transform: translateY(-2px);
+.social:hover {
+  border-color: #f3c34c;
   box-shadow: 0 0 10px rgba(243, 195, 76, .5);
 }
+.social--muted {
+  opacity: .4;
+  border-color: rgba(255, 255, 255, .2);
+  cursor: default;
+}
 .social .ico {
-  width: 1.15rem;
-  height: 1.15rem;
+  width: 1.1rem;
+  height: 1.1rem;
   margin: 0;
   fill: none;
   stroke: #f3c34c;
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+.social--muted .ico {
+  stroke: #888;
 }
 
 /* ===== Production Points (Creative Space, From Idea to Event) ===== */
@@ -775,39 +822,37 @@ details[open] > summary.btn-more::after {
   line-height: 1.45;
   margin: 0;
 }
-  color: #d6d2c8;
-  margin: 0;
-}
 
-/* ===== Section 8: Contact ===== */
+/* ===== Section 8: Contact Section ===== */
 .contact-zone {
   position: relative;
   isolation: isolate;
-  min-height: 100svh;
-  padding: 3.5rem 1.5rem 12rem;
+  padding: 3.5rem 1.5rem 8rem;
 }
 .contact-zone::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(180deg, var(--bg, #0a0a0b) 25%, rgba(10, 10, 11, .05) 75%, rgba(10, 10, 11, .3)),
+    linear-gradient(180deg, var(--bg, #0a0a0b) 20%, rgba(10, 10, 11, .1) 75%, rgba(10, 10, 11, .35)),
     var(--phones, none) right bottom / cover no-repeat;
 }
-.contact-zone section > * { max-width: 36rem; }
-.contact-zone p { color: #bdb9b0; }
-.contact-zone p + p { margin-top: .9rem; }
-.contact-zone .contacts { margin: 1.8rem 0 0; }
+.contact-grid {
+  width: 100%;
+  margin-inline: auto;
+}
+.contact-main p { color: #bdb9b0; }
+.contact-main p + p { margin-top: .75rem; }
 
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
   gap: .9rem;
-  margin: 1.6rem 0 1.2rem;
+  margin: 1.5rem 0 1.2rem;
 }
-.btn-lg { padding: .9rem 2.4rem; font-size: 1rem; }
+.btn-lg { padding: .85rem 2.2rem; font-size: .98rem; }
 .btn-outline {
   background: transparent;
   color: #f3c34c;
-  border: 2px solid #f3c34c;
+  border: 1.5px solid #f3c34c;
   box-shadow: none;
 }
 .btn-outline:hover {
@@ -815,25 +860,87 @@ details[open] > summary.btn-more::after {
   color: #1c1405;
 }
 
-/* Glass background for contacts */
-.glass { position: relative; isolation: isolate; width: fit-content; max-width: 100%; }
-.glass::before {
-  content: ""; position: absolute; inset: -1.6rem -1.3rem; z-index: -1;
-  background: rgba(10, 10, 11, .55);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent), linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent), linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
-  mask-composite: intersect;
+/* Glass card for contacts */
+.glass {
+  position: relative;
+  isolation: isolate;
+  background: rgba(10, 10, 11, .65);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .45);
+  padding: 1.6rem 1.5rem;
+}
+.contacts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+.contacts a, .contacts span {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.02rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.contacts a:hover {
+  color: #f3c34c;
+}
+.contacts .ico {
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0;
+  stroke: #f3c34c;
 }
 
-/* ===== Tablet & Desktop Layouts (≥48rem / 768px) ===== */
+/* Checkpoints for Contact Layout */
+/* Desktop (≥ 64rem / 1024px) & Tablet (48rem to 63.99rem / 768px to 1023px): Side by side! */
 @media (min-width: 48rem) {
-  .panel { padding-inline: max(2rem, calc((100% - 72rem) / 2)); }
-  .contact-zone { padding-inline: max(2rem, calc((100% - 72rem) / 2)); }
-  .metrics { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .cols3 { grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
-  .offers { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .offer { padding: 2rem; }
-  .avatar-lg { width: 6.2rem; height: 6.2rem; }
+  .contact-zone {
+    padding: 4.5rem 2rem 9rem;
+  }
+  .contact-grid {
+    max-width: 62rem;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .contact-aside {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .contact-aside .glass {
+    width: 100%;
+    max-width: 24rem;
+  }
+}
+
+/* Mobile (< 48rem / < 768px): Stacked with safe margins away from screen edges */
+@media (max-width: 47.99rem) {
+  .contact-zone {
+    padding: 3rem 1.5rem 7rem;
+  }
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 24rem;
+    margin-inline: auto;
+  }
+  .contact-aside .glass {
+    width: 100%;
+    padding: 1.4rem 1.25rem;
+  }
+  .contacts a, .contacts span {
+    font-size: .94rem;
+    gap: .75rem;
+  }
 }
