@@ -7,7 +7,7 @@
 <title>Leprechaun Lab – Events &amp; Production in Ireland</title>
 <meta name="description" content="Leprechaun Lab organises music events and provides DJ sets, sound, lighting and technical production in Ireland. Partner with us as a sponsor, artist or venue.">
 <link rel="stylesheet" href="css/style.css?v=21">
-<link rel="stylesheet" href="css/extras.css?v=9">
+<link rel="stylesheet" href="css/extras.css?v=11">
 </head>
 <body>
 
@@ -271,14 +271,20 @@
         <p>Want to meet an audience that cares about music, sound and atmosphere? Let’s talk about the possibilities:</p>
         <ul class="list"><li>Sponsoring a party</li><li>Integrating your brand into an event</li><li>Creating a joint event</li></ul>
         <p>Every collaboration is shaped around your goals and budget.</p>
-        <div class="actions"><a class="btn btn-sm" href="mailto:leprechaunlabie@gmail.com?subject=Sponsorship%20enquiry">Discuss sponsorship</a></div>
+        <div class="actions">
+          <a class="btn btn-sm" href="https://wa.me/353899752408?text=Hi%21%20I%27d%20like%20to%20discuss%20sponsorship%20with%20Leprechaun%20Lab." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-sm btn-outline" href="mailto:leprechaunlabie@gmail.com?subject=Sponsorship%20enquiry">Email</a>
+        </div>
       </article>
       <article id="artists-venues" class="offer">
         <h3>For Artists &amp; Venues</h3>
         <p>DJs, live acts and venues, let’s build something together:</p>
         <ul class="list"><li>Guest sets</li><li>Joint club nights</li><li>Showcases</li><li>Ongoing collaboration with venues</li></ul>
         <p>Tell us about yourself, share a link to your music or venue, and describe your idea.</p>
-        <div class="actions"><a class="btn btn-sm" href="mailto:leprechaunlabie@gmail.com?subject=Artist%20%26%20venue%20collaboration">Propose a collaboration</a><a class="link-secondary" href="https://wa.me/353899752408?text=Hi%21%20I%27d%20like%20to%20propose%20a%20collaboration." target="_blank" rel="noopener">or message on WhatsApp</a></div>
+        <div class="actions">
+          <a class="btn btn-sm" href="https://wa.me/353899752408?text=Hi%21%20I%27d%20like%20to%20propose%20an%20artist%20or%20venue%20collaboration." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-sm btn-outline" href="mailto:leprechaunlabie@gmail.com?subject=Artist%20%26%20venue%20collaboration">Email</a>
+        </div>
       </article>
     </div>
   </section>
@@ -450,6 +456,17 @@
         else goToSlide(currentSlide - 1);
       }
     }, { passive: true });
+
+    // Handle window resize cleanly without slide distortion
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      slider.style.transition = 'none';
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        slider.style.transition = '';
+      }, 100);
+    });
 
     document.querySelectorAll('.project-card__details').forEach(details => {
       const textSpan = details.querySelector('.btn-more__text');
